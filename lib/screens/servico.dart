@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Servico extends StatelessWidget {
+class Servico extends StatefulWidget {
   const Servico({Key? key}) : super(key: key);
+
+  @override
+  _ServicoState createState() => _ServicoState();
+}
+
+class _ServicoState extends State<Servico> {
+  String selectedService = 'Selecione Serviço';
+  String selectedDate = 'Selecione a Data';
+  String selectedTime = 'Selecione o Horário';
 
   @override
   Widget build(BuildContext context) {
@@ -12,33 +21,17 @@ class Servico extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 40),
-            Padding(
-              padding: const EdgeInsets.only(left: 20.0),
+            const Padding(
+              padding: EdgeInsets.only(left: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     "AgilizApp",
                     style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 191, 72, 231),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Adicione a lógica para definir a localização aqui
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 196, 195, 197),
-                      ),
-                      child: const Text(
-                        "Definir Localização",
-                        style: TextStyle(color: Colors.black),
-                      ),
                     ),
                   ),
                 ],
@@ -47,31 +40,38 @@ class Servico extends StatelessWidget {
 
             const SizedBox(
               height: 290,
-            ), //espaço onde implementar inf do serviço
+            ),
 
-            // DropdownButton 1
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 20, right: 15), // Adicionado padding à direita
-              child: DropdownButton<String>(
-                value: 'Opção 1',
-                onChanged: (String? newValue) {
-                  // Adicione a lógica para a opção selecionada aqui
-                },
-                items: <String>[
-                  'Opção 1',
-                  'Opção 2',
-                  'Opção 3',
-                  'Opção 4',
-                  'Opção 5'
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 15),
+              child: Container(
+                width: 370,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 196, 195, 197),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: DropdownButtonFormField<String>(
+                  value: selectedService,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedService = newValue!;
+                    });
+                  },
+                  items: <String>[
+                    'Serviço 1',
+                    'Serviço 2',
+                    'Serviço 3',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
                       child: Text(value),
-                    ),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
             ),
 
@@ -79,29 +79,37 @@ class Servico extends StatelessWidget {
               height: 15,
             ),
 
-            // DropdownButton 2
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 20, right: 15), // Adicionado padding à direita
-              child: DropdownButton<String>(
-                value: 'Opção 2',
-                onChanged: (String? newValue) {
-                  // Adicione a lógica para a opção selecionada aqui
-                },
-                items: <String>[
-                  'Opção 1',
-                  'Opção 2',
-                  'Opção 3',
-                  'Opção 4',
-                  'Opção 5'
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 15),
+              child: Container(
+                width: 370,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 196, 195, 197),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: DropdownButtonFormField<String>(
+                  value: selectedDate,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedDate = newValue!;
+                    });
+                  },
+                  items: <String>[
+                    'Selecione a Data',
+                    'Data 1',
+                    'Data 2',
+                    'Data 3',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
                       child: Text(value),
-                    ),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
             ),
 
@@ -109,36 +117,43 @@ class Servico extends StatelessWidget {
               height: 15,
             ),
 
-            // DropdownButton 3
             Padding(
-              padding: const EdgeInsets.only(
-                  left: 20, right: 15), // Adicionado padding à direita
-              child: DropdownButton<String>(
-                value: 'Opção 3',
-                onChanged: (String? newValue) {
-                  // Adicione a lógica para a opção selecionada aqui
-                },
-                items: <String>[
-                  'Opção 1',
-                  'Opção 2',
-                  'Opção 3',
-                  'Opção 4',
-                  'Opção 5'
-                ].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Container(
+              padding: const EdgeInsets.only(left: 20, right: 15),
+              child: Container(
+                width: 370,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(255, 196, 195, 197),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: DropdownButtonFormField<String>(
+                  value: selectedTime,
+                  onChanged: (String? newValue) {
+                    setState(() {
+                      selectedTime = newValue!;
+                    });
+                  },
+                  items: <String>[
+                    'Selecione o Horário',
+                    'Horário 1',
+                    'Horário 2',
+                    'Horário 3',
+                  ].map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
                       child: Text(value),
-                    ),
-                  );
-                }).toList(),
+                    );
+                  }).toList(),
+                  decoration: const InputDecoration(
+                    contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                    border: InputBorder.none,
+                  ),
+                ),
               ),
             ),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 40),
             const Padding(
-              padding: EdgeInsets.only(
-                  left: 20, right: 15), // Adicionado padding à direita
+              padding: EdgeInsets.only(left: 20, right: 15),
               child: Text(
                 "Agendamento",
                 style: TextStyle(
@@ -151,8 +166,7 @@ class Servico extends StatelessWidget {
 
             const SizedBox(height: 10),
             const Padding(
-              padding: EdgeInsets.only(
-                  left: 20, right: 15), // Adicionado padding à direita
+              padding: EdgeInsets.only(left: 20, right: 15),
               child: Text(
                 "Subtotal",
                 style: TextStyle(
@@ -164,8 +178,7 @@ class Servico extends StatelessWidget {
 
             const SizedBox(height: 30),
             const Padding(
-              padding: EdgeInsets.only(
-                  left: 20, right: 15), // Adicionado padding à direita
+              padding: EdgeInsets.only(left: 20, right: 15),
               child: Text(
                 "Total",
                 style: TextStyle(
@@ -176,26 +189,26 @@ class Servico extends StatelessWidget {
               ),
             ),
 
-            // Botão Avançar
-
-            Container(
-              width: 370,
-              margin: const EdgeInsets.only(top: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Adicione a lógica para o botão Avançar aqui
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 20, 216, 69),
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 15), // Espaçamento interno
-                ),
-                child: const Text(
-                  "Avançar",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 370,
+                margin: const EdgeInsets.only(top: 10),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Adicione a lógica para o botão Avançar aqui
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 20, 216, 69),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  child: const Text(
+                    "Avançar",
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),

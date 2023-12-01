@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Busca extends StatefulWidget {
-  const Busca({Key? key}) : super(key: key);
+class Agenda extends StatefulWidget {
+  const Agenda({Key? key}) : super(key: key);
 
   @override
-  _BuscaState createState() => _BuscaState();
+  _AgendaState createState() => _AgendaState();
 }
 
-class _BuscaState extends State<Busca> {
-  String _selectedFilter = "Maior Disponibilidade";
+class _AgendaState extends State<Agenda> {
+  String selectedMonth = 'Mês';
 
   @override
   Widget build(BuildContext context) {
@@ -31,65 +31,51 @@ class _BuscaState extends State<Busca> {
                       color: Color.fromARGB(255, 191, 72, 231),
                     ),
                   ),
+                  const SizedBox(height: 30),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Adicione a lógica para definir a localização aqui
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 196, 195, 197),
+                    padding: const EdgeInsets.only(right: 40.0),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 10,
+                        horizontal: 20,
+                      ),
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 196, 195, 197),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: const Text(
-                        "Definir Localização",
-                        style: TextStyle(color: Colors.black),
+                        "Agenda",
+                        style: TextStyle(
+                          color: Color.fromARGB(255, 3, 3, 3),
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 75),
+
             const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: "Buscar Serviço",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              padding: EdgeInsets.only(left: 20, right: 15),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text("Filtrar por:"),
-                  const SizedBox(width: 10),
-                  DropdownButton<String>(
-                    value: _selectedFilter,
-                    onChanged: (String? newValue) {
-                      setState(() {
-                        _selectedFilter = newValue!;
-                      });
-                    },
-                    items: <String>[
-                      'Maior Disponibilidade',
-                      'Menor Valor',
-                      'Melhor Avaliação'
-                    ].map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                  Text(
+                    "Horários Marcados:",
+                    style: TextStyle(
+                      fontSize: 25.0,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 0, 0, 0),
+                    ),
                   ),
                 ],
               ),
             ),
 
-            const Spacer(), //Inicio da Barra de Tarefas
+            const Spacer(), // Início da Barra de Tarefas
             Container(
               color: const Color.fromARGB(255, 196, 195, 197),
               child: Row(
@@ -104,7 +90,7 @@ class _BuscaState extends State<Busca> {
                       shadowColor: Colors.transparent,
                     ),
                     child: const Text(
-                      "Inicio",
+                      "Início",
                       style: TextStyle(
                         fontSize: 15.5,
                         fontWeight: FontWeight.bold,

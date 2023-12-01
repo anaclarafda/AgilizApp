@@ -1,4 +1,4 @@
-import 'package:agr_vai/screens/servico.dart';
+import 'package:agr_vai/screens/agenda.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +12,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-        debugShowCheckedModeBanner: false, title: 'AgilizApp', home: Servico());
+        debugShowCheckedModeBanner: false, title: 'AgilizApp', home: Agenda());
   }
 }
